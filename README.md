@@ -1,3 +1,5 @@
+# Go Language Study
+
 ## Installation
 
 https://golang.org/doc/install
@@ -40,6 +42,8 @@ go version
 
 ### 3. First Script - Hello World!
 
+#### hello-world.go
+
 ```go
 package main
 import 'fmt'
@@ -47,19 +51,43 @@ import 'fmt'
 func main(){
     fmt.Println("Hello, World!")
 }
+```
 
-/*
-## Execution#1-Run without Compile
+1. Execution without Compile
+   - Easy to execute but slow to get output
+
+```shell
 # go run hello-world.go
 Hello, World!
+```
 
-## Execution#2-Run with Compile
+2.  Execution with Compile
+    - Build/compile source to executable file.
+    - Windows -> .exe file; Linux/Mac -> ELF 64-bit LSB executable file.
+    - After build, the file can be run anywhere without setting go env.
+    - The compiled file is much bigger than source file because it includes all the dependency.
+
+```shell
 # go build hello-world.go
 # ls -l
-
+-rwxr-xr-x 1 root root 1766310 Sep 26 18:17 hello-world
+-rw-r--r-- 1 root root      72 Sep 26 05:32 hello-world.go
 # ./hello-world
+Hello, World!
+# file hello-world
+hello-world: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=tdA533oGZ9DAVBU2Mc-3/QaURQoqz7nlFIKU1zJiP/a1n0XjGLqnuMixhqdNIG/EHa6VwU4ZBny6DT8K6V8, not stripped
+```
 
-## Execution#3-
+3. Execution with Different Name Compile
+   - variable `-o` modify the output name.
 
-*/
+```shell
+# go build -o hello-go hello-world.go
+# ls -l
+-rwxr-xr-x 1 root root 1766310 Sep 26 18:22 hello-go
+-rw-r--r-- 1 root root      72 Sep 26 05:32 hello-world.go
+# ./hello-go
+Hello, World!
+# file hello-go
+hello-go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=tdA533oGZ9DAVBU2Mc-3/QaURQoqz7nlFIKU1zJiP/a1n0XjGLqnuMixhqdNIG/EHa6VwU4ZBny6DT8K6V8, not stripped
 ```
