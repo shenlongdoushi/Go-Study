@@ -21,8 +21,19 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
 
 ### 2. Add /usr/local/go/bin to the PATH environment variable and verify Go version.
 
+- Set Go env to user
+
 ```shell
-export PATH=$PATH:/usr/local/go/bin
+cat >> $HOME/.bashrc << EOF
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+EOF
+source $HOME/.bashrc
+```
+
+- Check Go Version
+
+```
 go version
 # go version go1.17.1 linux/amd64
 ```
@@ -37,6 +48,18 @@ func main(){
     fmt.Println("Hello, World!")
 }
 
-// go run hello-world.go
-// Hello, World!
+/*
+## Execution#1-Run without Compile
+# go run hello-world.go
+Hello, World!
+
+## Execution#2-Run with Compile
+# go build hello-world.go
+# ls -l
+
+# ./hello-world
+
+## Execution#3-
+
+*/
 ```
