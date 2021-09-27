@@ -91,3 +91,7 @@ Hello, World!
 # file hello-go
 hello-go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=tdA533oGZ9DAVBU2Mc-3/QaURQoqz7nlFIKU1zJiP/a1n0XjGLqnuMixhqdNIG/EHa6VwU4ZBny6DT8K6V8, not stripped
 ```
+
+## Tips
+
+### All the Packages and Variables defined in the script must be used, otherwise will be errors.
