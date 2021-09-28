@@ -33,4 +33,8 @@ func main()  {
 	fmt.Printf("d takes %d bytes\n", unsafe.Sizeof(d))
 	// 100 Holiday 3.140000
 	// d takes 1 bytes
+
+	var e float32
+	e = float32(a)
+	fmt.Printf("e is %v, the type is %T\n", e, e)
 }
