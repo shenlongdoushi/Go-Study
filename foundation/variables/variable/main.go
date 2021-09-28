@@ -6,13 +6,13 @@ import (
 	"unsafe"
 )
 
-func main()  {
+func main() {
 	// Variable has default value:
 	// int = 0, string = ""
 	var i int
 	var j string
 	var q float64 = 3.14
-	fmt.Println("i=",i,"j=",j,"q=",q)
+	fmt.Println("i=", i, "j=", j, "q=", q)
 	// i= 0 j=
 
 	// Let Go determine variable type
@@ -29,7 +29,7 @@ func main()  {
 		c = 3.14
 		d byte
 	)
-	fmt.Printf("%d %s %f\n", a,b,c)
+	fmt.Printf("%d %s %f\n", a, b, c)
 	fmt.Printf("d takes %d bytes\n", unsafe.Sizeof(d))
 	// 100 Holiday 3.140000
 	// d takes 1 bytes
@@ -37,4 +37,14 @@ func main()  {
 	var e float32
 	e = float32(a)
 	fmt.Printf("e is %v, the type is %T\n", e, e)
+
+	// `` keeps the text format
+	var p1 = `
+	Hello, how are you?
+	I am fine, thank you and you?
+	`
+	fmt.Printf("Text is %v\n", p1)
+	// Text is 
+	// 	Hello, how are you?
+	// 	I am fine, thank you and you?
 }

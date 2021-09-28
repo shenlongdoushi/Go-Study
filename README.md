@@ -95,3 +95,12 @@ hello-go: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked
 ## Tips
 
 ### All the Packages and Variables defined in the script must be used, otherwise will be errors.
+
+### Use GO official formatter - gofmt
+
+```go
+// just print and review the code
+gofmt yourcode.go
+// format and overwrite the current code
+gofmt -w yourcode.go
+```
