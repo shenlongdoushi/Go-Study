@@ -1,4 +1,4 @@
-package leetcode
+package main
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func TestTwoSum(t *testing.T) {
 		},
 		{
 			para1{[]int{2, 7, 11, 15}, 9},
-			ans1{[]int{0, 2}},
+			ans1{[]int{0, 1}},
 		},
 	}
 
@@ -36,7 +36,7 @@ func TestTwoSum(t *testing.T) {
 
 	for _, testCase := range qs {
 		testInp, testRes := testCase.para1, testCase.ans1
-		actualRes := twoSum(testInp.nums, testInp.target)
+		actualRes := twoSum_map(testInp.nums, testInp.target)
 		fmt.Printf("Actual: [Input]: %v   [Output]: %v\n", testInp, actualRes)
 		fmt.Printf("TestFile: [Input]: %v   [Output]: %v\n", testInp, testRes.one)
 		fmt.Println(reflect.DeepEqual(actualRes, testRes.one))
