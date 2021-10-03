@@ -178,7 +178,7 @@ go: creating new go.mod: module testmod
 0 directories, 1 file
 ```
 
-2. Create Go package files
+2. Create Go package files.
 
 ```go
 // testmod.go
@@ -187,6 +187,7 @@ package main
 import (
 	"fmt"
     // This external package collects pithy sayings.
+    // https://pkg.go.dev/rsc.io/quote
 	"rsc.io/quote"
 )
 
