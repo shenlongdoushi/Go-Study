@@ -218,6 +218,36 @@ Hello, world.
 Don't communicate by sharing memory, share memory by communicating.
 ```
 
+4. After execute, the go mod files contents.
+
+- `go.mod`: A module is defined by a UTF-8 encoded text file named go.mod in its root directory. The go.mod file is line-oriented. Each line holds a single directive, made up of a keyword followed by arguments.
+
+```go
+module testmod
+
+go 1.17
+
+require rsc.io/quote v1.5.2
+
+require (
+	golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c // indirect
+	rsc.io/sampler v1.3.0 // indirect
+)
+
+```
+
+- `go.sum`: This file lists down the checksum of direct and indirect dependency required along with the version. It is to be mentioned that the go.mod file is enough for a successful build. Then why go.sum file is needed?. The checksum present in go.sum file is used to validate the checksum of each of direct and indirect dependency to confirm that none of them has been modified.
+
+```go
+golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c h1:qgOY6WgZOaTkIIMiVjBQcw93ERBE4m30iBm00nkL0i8=
+golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
+rsc.io/quote v1.5.2 h1:w5fcysjrx7yqtD/aO+QwRjYZOKnaM9Uh2b40tElTs3Y=
+rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
+rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
+rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
+
+```
+
 ## Tips
 
 ### All the Packages and Variables defined in the script must be used, otherwise will be errors.
