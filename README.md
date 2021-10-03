@@ -160,7 +160,7 @@ PKG_CONFIG="pkg-config"
 GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build437493066=/tmp/go-build -gno-record-gcc-switches"
 ```
 
-### Example
+#### Example
 
 https://golang.org/doc/tutorial/getting-started
 
@@ -246,6 +246,82 @@ rsc.io/quote v1.5.2/go.mod h1:LzX7hefJvL54yjefDEDHNONDjII0t9xZLPXsUe+TKr0=
 rsc.io/sampler v1.3.0 h1:7uVkIFmeBqHfdjD+gZwtXXI+RODJ2Wc4O7MPEh/QiW4=
 rsc.io/sampler v1.3.0/go.mod h1:T1hPZKmBbMNahiBKFy5HrXp6adAjACjK9JXDnKaTXpA=
 
+```
+
+### Import Local Package
+
+While developing, local packages are often used temporarily for testing purpose instead of updating `GOPATH`. The key to use local package is directory hierarchy and package management.
+
+1.  Create Root Directory and Put Local Directory under Root.
+
+```shell
+# tree -fph leetcode/
+leetcode
+├── [-rw-r--r--   39]  leetcode/go.mod
+├── [-rw-r--r--  167]  leetcode/main.go
+└── [drwxr-xr-x 4.0K]  leetcode/twoSum
+    ├── [-rw-r--r--  196]  leetcode/twoSum/twoSum.go
+    └── [-rw-r--r-- 1.1K]  leetcode/twoSum/twoSum_test.go
+
+1 directory, 4 files
+```
+
+2. `go mod init` at root level and name package at child level
+
+```go
+// go.mod
+// Best practice to name a git source for future operation
+module github.com/nl/leetcode
+
+go 1.17
+
+```
+
+```go
+// twoSum.go
+// package name twoSum, which is under module github.com/nl/leetcode/twoSum
+// func name has to be first letter capital to be called external, e.g., TwoSum()
+package twoSum
+
+func TwoSum(nums []int, target int) ([]int)  {
+	m := make(map[int]int)
+	for k,v := range nums {
+		if idx,ok:=m[target-v]; ok {
+			return []int{idx, k}
+		}
+		m[v]=k
+	}
+	return nil
+}
+```
+
+3. Import local packages into main function `main.go`. `go run` command has to run in the same directory with go file.
+
+```go
+// main.go
+// Import local package to call functions
+package main
+
+import (
+	"fmt"
+
+	"github.com/nl/leetcode/twoSum"
+)
+
+func main() {
+	fmt.Println("Import Local Package")
+	fmt.Println(twoSum.TwoSum([]int{2,7,11,15},9))
+}
+```
+
+```shell
+# go env | grep GOROOT
+GOROOT="/usr/local/go"
+# pwd
+/home/coder/project/go-study/leetcode
+# go run main.go
+Import Local Package
+[0 1]
 ```
 
 ## Tips
