@@ -1,10 +1,11 @@
 # Go Language Study
 
+## Reference Website
+- https://www.liwenzhou.com/posts/Go/golang-menu/
+- https://golang.org/doc/install
+- https://golang.org/dl/
+
 ## Installation
-
-https://golang.org/doc/install
-
-https://golang.org/dl/
 
 Here is the step about installation on ubuntu server:
 
